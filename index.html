@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Webscale - CIAO</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<h1>Group 20 - Webscale analytics project</h1>
+	<h2>CIAO - Discovering new subtopics</h2>
+	<h3>Bryan Cornelius - Florent Plomb - Matthieu Harbich</h3>
+	<div id="links">
+		<ul>
+			<li><a href="scripts/dataFilesPreparation.html">Step 1</a> - Preparing the data files</li>
+			<li><a href="scripts/visualisations.html">Step 2</a> - Visualisations</li>
+			<li><a href="scripts/LDAClustering.html">Step 3</a> - LDA clustering (only for one theme)</li>
+			<li><a href="scripts/subthemeClassifier.html">Step 4</a> - Subthemes classifier (only for one theme)</li>
+			<li><a href="scripts/finalDrogue.csv" download="Result-Sample-Drogue">Result</a> - Only the 130 first posts. Subtheme is the last column. (only for one theme)</li>
+		</ul>
+	</div>
+	<div id="mainText">
+		<p>This project was in partnership with Ciao.ch, an association with the aim of contributing to the well being of teenagers in Suisse Romande by providing a forum, on which the teenagers can ask questions in staying anonymous.</p> 
+
+		<p>Launch in 97, they want to have a global view of the evolution of the questions until today, to identify possible trends within them and to potentially link them to external events or innovations. The data set is an aggregation of more than 100’000 questions formed by the following attributes.</p>
+
+		<table class="tg">
+		  <tr>
+		    <th class="tg-yzt1">Date</th>
+		    <th class="tg-yzt1">Sex</th>
+		    <th class="tg-yzt1">Age</th>
+		    <th class="tg-yzt1">Région</th>
+		    <th class="tg-yzt1">Thème</th>
+		    <th class="tg-yzt1">Titre</th>
+		    <th class="tg-yzt1">Question</th>
+		    <th class="tg-yzt1">Réponse</th>
+		  </tr>
+		  <tr>
+		    <td class="tg-yw4l">2014-12..</td>
+		    <td class="tg-yw4l">F</td>
+		    <td class="tg-yw4l">14</td>
+		    <td class="tg-yw4l">Vaud</td>
+		    <td class="tg-yw4l">Séxualité</td>
+		    <td class="tg-yw4l">En …</td>
+		    <td class="tg-yw4l">Je suis…?</td>
+		    <td class="tg-yw4l">Il est ….</td>
+		  </tr>
+		</table>
+
+		<p>Unfortunately, when we look at the <a href="scripts/visualisations.html">visualisations</a> of our analysis, we realise that the number of questions asked is reducing with time and in all categories. This is due to the fact that teenagers are checking some already asked questions. Thus, analysing the frequency of asked questions is not representatif at all. Despite the fact that there is some interesting patterns that are drawn on the visualisations, the project will take an other direction.</p>
+
+		<img src="visu.png" alt="" style="width:100%">
+
+		<p>Three themes are most important compared to the others, which are sex, drugs and self-confidence. CIAO also wanted to discover subcategories to have a better classification of their posts, so that teenagers can search them faster and more efficiently. So our new goal was then to add a new subtheme column to the original csv file and to fill in for these three themes by analysing the data.</p>
+
+		<table class="tg">
+		  <tr>
+		    <th class="tg-yzt1">Date</th>
+		    <th class="tg-yzt1">Sex</th>
+		    <th class="tg-yzt1">Age</th>
+		    <th class="tg-yzt1">Région</th>
+		    <th class="tg-yzt1">Thème</th>
+		    <th class="tg-yzt1">Titre</th>
+		    <th class="tg-yzt1">Question</th>
+		    <th class="tg-yzt1">Réponse</th>
+		    <th class="tg-i6eq"  style="background-color:#FF8B8B">Sous-thème</th>
+		  </tr>
+		  <tr>
+		    <td class="tg-yw4l">2014-12..</td>
+		    <td class="tg-yw4l">F</td>
+		    <td class="tg-yw4l">14</td>
+		    <td class="tg-yw4l">Vaud</td>
+		    <td class="tg-yw4l">Séxualité</td>
+		    <td class="tg-yw4l">En …</td>
+		    <td class="tg-yw4l">Je suis…?</td>
+		    <td class="tg-yw4l">Il est ….</td>
+		    <td class="tg-yw4l">Contraception</td>
+		  </tr>
+		</table>
+		
+		<p>To do so, we needed python to process all the data. First, we had to prepare the data with these <a href="scripts/dataFilesPreparation.html">scripts</a>(preparing the data files)</p>.
+		<p>Once the file prepared, we can now <a href="scripts/LDAClustering.html">cluster</a> the three most important themes that we choosed, sex, drugs and "self-confidence". We are using the LDA approach for clustering.  The script only provides the cluster code for one theme, it's exactly the same for the others. </p>
+		
+		<p id="lists">
+			Here are the results of the discover of the new subthemes of each theme: <br>
+			<b>Sexualité:</b> Contraception - Anatomie - Rapport sexuel - Amitié / Amour <br>
+			<b>Boire, fumer et se droguer:</b> Substance - Tabagisme & cannabis - Entourage - Alcool <br>
+			<b>Moi, toi et les autres:</b> Amour - Famille - Image de soi - Le temps dans les relations <br>
+		</p>
+		
+		<p>
+			In this last <a href="scripts/subthemeClassifier.html">script</a>(subtheme classifier), we are adding a new column to the original csv file with the new discovered subtheme.
+		</p>
+		<p>
+			Let's have a look to a sample of the <a href="scripts/finalDrogue.csv" download="Result-Sample-Drogue">result</a>!
+		</p>
+		<p>
+			After having analyzed the results, we want do some comments. First, we should also including the titles into our analyzis, because they are very rich in information. And second comment, we are only vectorizing the questions, but not the words. Which means that the similarity between "Alcool" and "Alcol" is 0 in our case. Vectorizing words as well would provide a high similarity between the right and mispelled word. The posts are posted by teenagers, and there is a lot, LOT of mistakes in the words. Vectorizing words would be very important as well to have really accurate results. <br>
+			But in general, the results are pretty good, we are happy of what we could do with this class.
+		</p>
+		<p>
+			Thank you!!! Group 20.
+		</p>
+		<p style="text-align: center">
+			Bryan cornelius - Florent Plomb - Matthieu Harbich
+		</p>
+
+	</div>
+</body>
+</html>

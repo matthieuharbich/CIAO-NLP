@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  webserver:
+    image: kitematic/hello-world-nginx
+    container_name: lazy2
+    ports:
+      - "9011:80"
+    volumes:
+      - ./:/website_files
+      - ./nginx_server/nginx.conf:/etc/nginx/conf.d/default.conf
+    # environment:
+    #     VIRTUAL_HOST: matthieu.cool
+
+
+# networks:
+#   default:
+#     external:
+#       name: nginx-proxy
